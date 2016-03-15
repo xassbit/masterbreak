@@ -19,13 +19,9 @@ class StatsViewController: UIViewController {
 
     override func viewWillAppear(animated: Bool) {
         
-        guard (averageBets != nil) && (numberGames != nil) && (minimumBets != nil) else {
-            textStats.text = "Stats not available"
-            super.viewWillAppear(animated)
-            return
-        }
+        let stats = getStats()
         
-        textStats.text = String.localizedStringWithFormat("Number of games won: \(numberGames!)\nAverage number of bets: %.2f\nMinimum number of bets: \(minimumBets!)", averageBets!)
+        textStats.text = String.localizedStringWithFormat("Number of games won: \(stats.num)\nAverage number of bets: %.2f\nMinimum number of bets: \(stats.min)", stats.mean)
         
         super.viewWillAppear(animated)
     }
@@ -36,5 +32,15 @@ class StatsViewController: UIViewController {
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    func getStats () -> MBStats {
+        guard let loadedData = NSUserDefaults.standardUserDefaults().dictionaryForKey("stats") as! [String:Float]? else {
+            let stats = MBStats(mean: 0.0, min: 0, num: 0)
+            return stats
+        }
+        
+        let stats = MBStats(mean: loadedData["mean"]!, min: Int(loadedData["min"]!), num: Int(loadedData["num"]!))
+        return stats
     }
 }

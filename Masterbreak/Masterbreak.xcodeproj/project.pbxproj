@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		922737281C624ABA00B83BB1 /* StatsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 922737271C624ABA00B83BB1 /* StatsViewController.swift */; };
+		9278869A1C987BC200CF2E9E /* MBStats.swift in Sources */ = {isa = PBXBuildFile; fileRef = 927886991C987BC200CF2E9E /* MBStats.swift */; };
 		92D4CB8D1C3C6E4A0081E4F4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4CB8C1C3C6E4A0081E4F4 /* AppDelegate.swift */; };
 		92D4CB8F1C3C6E4A0081E4F4 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 92D4CB8E1C3C6E4A0081E4F4 /* ViewController.swift */; };
 		92D4CB921C3C6E4B0081E4F4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 92D4CB901C3C6E4B0081E4F4 /* Main.storyboard */; };
@@ -37,7 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		922737271C624ABA00B83BB1 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsViewController.swift; path = ../StatsViewController.swift; sourceTree = "<group>"; };
+		922737271C624ABA00B83BB1 /* StatsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = StatsViewController.swift; path = Mastermind/StatsViewController.swift; sourceTree = SOURCE_ROOT; };
+		927886991C987BC200CF2E9E /* MBStats.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MBStats.swift; sourceTree = "<group>"; };
 		92D4CB891C3C6E4A0081E4F4 /* Masterbreak.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Masterbreak.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		92D4CB8C1C3C6E4A0081E4F4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		92D4CB8E1C3C6E4A0081E4F4 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 		92EECEBC1C73475800EE33C1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				927886991C987BC200CF2E9E /* MBStats.swift */,
 				92EECEB81C7346C500EE33C1 /* MBKey.swift */,
 				92EECEBA1C7346E900EE33C1 /* MBBet.swift */,
 			);
@@ -280,6 +283,7 @@
 				92D4CB8F1C3C6E4A0081E4F4 /* ViewController.swift in Sources */,
 				92D4CB8D1C3C6E4A0081E4F4 /* AppDelegate.swift in Sources */,
 				922737281C624ABA00B83BB1 /* StatsViewController.swift in Sources */,
+				9278869A1C987BC200CF2E9E /* MBStats.swift in Sources */,
 				92EECEBB1C7346E900EE33C1 /* MBBet.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

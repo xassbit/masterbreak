@@ -8,17 +8,6 @@
 
 import UIKit
 
-//key-value setup
-
-let kNumberGames = "games"
-var numberGames : Int?
-
-let kAverageBets = "average"
-var averageBets : Float?
-
-let kMinimumBets = "minimum"
-var minimumBets : Int?
-
 class ViewController: UIViewController {
     
     var key = MBKey.masterKey
@@ -114,8 +103,8 @@ class ViewController: UIViewController {
                     alertController.addAction(UIAlertAction(title: "New Game", style: UIAlertActionStyle.Default,handler: nil))
                     
                     self.presentViewController(alertController, animated: true, completion: nil)
-                    
-                    addToStats(numberBets: bets)
+
+                    updateStats(numberBets: bets)
                     clearFields()
                 }
                 
@@ -133,52 +122,29 @@ class ViewController: UIViewController {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let loadedData = NSUserDefaults.standardUserDefaults().integerForKey(kNumberGames) as Int? {
-            numberGames = loadedData
+
+    func updateStats(numberBets bets:Int) {
+        
+        func calculateNewMean (stats: MBStats, bets: Int) -> Float {
+            var newMean = Float(stats.num)*stats.mean
+            newMean += Float(bets) + 1.0
+            newMean /= Float(stats.num) + 1
+            
+            return newMean
         }
         
-        if let loadedData = NSUserDefaults.standardUserDefaults().floatForKey(kAverageBets) as Float? {
-            averageBets = loadedData
+        guard let loadedData = NSUserDefaults.standardUserDefaults().dictionaryForKey("stats") as! [String:Float]? else {
+            NSUserDefaults.standardUserDefaults().setObject(["mean": bets, "min": bets, "num": 1.0], forKey: "stats")
+            NSUserDefaults.standardUserDefaults().synchronize()
+            return
         }
         
-        if let loadedData = NSUserDefaults.standardUserDefaults().integerForKey(kMinimumBets) as Int? {
-            minimumBets = loadedData
-        }
-    }
-    
-    func addToStats(numberBets bets: Int) {
-        if let loadedData = NSUserDefaults.standardUserDefaults().integerForKey(kNumberGames) as Int? {
-            numberGames = loadedData
-        }
+        let oldStats = MBStats(mean: loadedData["mean"]!, min: Int(loadedData["min"]!), num: Int(loadedData["num"]!))
+        let newMean = calculateNewMean(oldStats, bets: bets)
+        let newMin = min(oldStats.min, bets)
+        let newNum = oldStats.num + 1
         
-        if let loadedData = NSUserDefaults.standardUserDefaults().floatForKey(kAverageBets) as Float? {
-            averageBets = loadedData
-        }
-        
-        if let loadedData = NSUserDefaults.standardUserDefaults().integerForKey(kMinimumBets) as Int? {
-            minimumBets = loadedData
-        } else {
-            minimumBets = 0
-        }
-        
-        if (numberGames != nil) {
-            if (averageBets != nil) {
-                let newAverage = ((Float(numberGames!) * averageBets!) + Float(bets)) / (Float(numberGames!) + 1)
-                averageBets = newAverage
-                NSUserDefaults.standardUserDefaults().setFloat(averageBets!, forKey: kAverageBets)
-            }
-            numberGames! += 1
-            NSUserDefaults.standardUserDefaults().setInteger(numberGames!, forKey: kNumberGames)
-        }
-        
-        if bets < minimumBets! {
-            minimumBets = bets
-            NSUserDefaults.standardUserDefaults().setInteger(minimumBets!, forKey: kMinimumBets)
-        } else if minimumBets == 0 {
-            minimumBets = bets
-        }
+        NSUserDefaults.standardUserDefaults().setObject(["mean": newMean, "min": Float(newMin), "num": Float(newNum)], forKey: "stats")
         
         NSUserDefaults.standardUserDefaults().synchronize()
     }
