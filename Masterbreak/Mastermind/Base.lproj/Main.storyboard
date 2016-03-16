@@ -340,20 +340,13 @@ MasterBreak - © 2016 Daniel Matias Ferrer</string>
                             <constraint firstItem="yVf-nT-w2W" firstAttribute="top" secondItem="vca-RW-8E5" secondAttribute="bottom" constant="8" symbolic="YES" id="sWi-gb-sZb"/>
                             <constraint firstItem="yVf-nT-w2W" firstAttribute="centerX" secondItem="v4d-vE-ule" secondAttribute="centerX" id="sYg-AP-soV"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="2Lm-y7-JrO" appends="YES" id="KxU-sI-nLI"/>
-                        </connections>
                     </view>
                     <connections>
                         <outlet property="textStats" destination="v4d-vE-ule" id="ARx-7s-Kqa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="B7f-fv-HO7" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <panGestureRecognizer delaysTouchesBegan="YES" minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="2Lm-y7-JrO">
-                    <connections>
-                        <action selector="dismiss:" destination="o0S-Lw-ujR" id="6PL-mJ-duz"/>
-                    </connections>
-                </panGestureRecognizer>
+                <panGestureRecognizer delaysTouchesBegan="YES" minimumNumberOfTouches="1" maximumNumberOfTouches="1" id="2Lm-y7-JrO"/>
             </objects>
             <point key="canvasLocation" x="1460" y="490"/>
         </scene>

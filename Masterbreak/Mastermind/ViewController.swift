@@ -115,14 +115,6 @@ class ViewController: UIViewController {
     }
     
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
     func updateStats(numberBets bets:Int) {
         
         func calculateNewMean (stats: MBStats, bets: Int) -> Float {
